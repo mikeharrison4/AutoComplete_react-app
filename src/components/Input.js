@@ -9,8 +9,7 @@ const Input = ({ input, actionSetInput, actionSetSuggestion }) => {
     const handleTextChange = (e) => {
         const value = e.target.value;
         actionSetInput(value);
-        const regex = new RegExp(`^${e.target.value}`, 'i');
-        const filteredSuggestions = Countries.filter(c => regex.test(c))
+        const filteredSuggestions = Countries.filter(c => value.includes(c));
         const autoSuggestions = value.length === 0 ? [] : filteredSuggestions;
         actionSetSuggestion(autoSuggestions);
     };
